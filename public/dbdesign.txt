@@ -1,0 +1,44 @@
+
+Rancangan database
+
+1. tabel produk
+-nama_produk
+-id_kategori (one to one:kategori)
+-harga_sewa
+-stok
+-deskripsi_produk
+-detail_produk
+
+2. tabel kategori
+-id_kategori (one to one:produk)
+-kategori
+
+3. tabel detail_pesanan
+-id_produk(one to many : produk)		: tas			| tenda
+-id_pesanan (one to many : pesanan)		: 1				| 1
+-tanggal_pinjam							: 12 april
+-tanggal_kembali						: 15 april
+-jumlah_produk							: 3				| 1
+-jumlah_harga 							: 50 000*3		| 100 000*3
+
+4. tabel pesanan
+-id_user (one to many : user)	: jo
+-tanggal_pinjam					: 12 april
+-tanggal_kembali				: 15 april
+-total_harga					: 450 000
+
+5. tabel produk_dipinjam
+-id 								: 1				| 2 
+-id_user (one to many : user)		: jo 			| jo
+-id_produk (one to many)			: tas 			| tenda
+-tanggal 							: 12 april 		| "
+-jumlah 							: 3 			| 1
+
+6. tabel produk_kembali
+-id_user (one to many : user) 		: jo
+-id_produk (one to many) 			: tas
+-tanggal 							: 15 april
+-jumlah 							: 3
+
+analogi
+jo pesan tas 3, tenda 1. tanggal 12 april - 15 april.

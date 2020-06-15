@@ -1,0 +1,11 @@
+composer require laravel/ui "^2.0"
+php artisan ui vue --auth
+
+add column to existing table
+php artisan make:migration <name> --table=<existing_table>
+eg
+up()
+$table->string('hp')->after('alamat)->nullable();
+
+down()
+$table->dropColumn('hp');
