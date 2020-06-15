@@ -1,0 +1,1 @@
+<h1>asdasdas</h1><?php /**PATH C:\xampp\htdocs\campzone-master\resources\views/admin/brand/brand.blade.php ENDPATH**/ ?>
