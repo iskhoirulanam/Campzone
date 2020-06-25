@@ -14,7 +14,7 @@
                 <div class="row">
                     <div class="col-md-5 m-auto">
                         <div class="rental-imgBox">
-                            <img src="/img/product1.jpg" alt="">
+                            <img src="{{ asset('img/produk/'.$produk->foto) }}" alt="">
                         </div>
                     </div>
 
@@ -44,7 +44,7 @@
                             </tbody>
                         </table>
                         <hr>
-                        <form action="{{ url('rental') }}/{{$produk->id}}" method="POST">
+                        <form action=" {{ url('rental') }}/{{$produk->id}}" method="POST">
                             {{csrf_field()}}
                             <div class="form-group pl-2 pr-2">
                                 <label for="tanggal pinjam">Tanggal Pinjam</label>

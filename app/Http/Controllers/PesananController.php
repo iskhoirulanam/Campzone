@@ -86,4 +86,17 @@ class PesananController extends Controller
         // alihkan halaman ke halaman pegawai
         return redirect('admin/pesanan');
     }
+
+    public function pesanan_detail($id)
+    {
+        $user = User::all();
+      //  $pesanan = Pesanan::orderBy('tanggal','desc')->get();
+        $pesanan = Pesanan::all();
+       // $pesanan_detail = PesananDetail::orderBy('created_at','desc')->get();
+        $pesanan_detail = PesananDetail::where('pesanan_id',$id)->get();
+       // $pd = PesananDetail::where
+
+        
+        return view('admin.pesanan_detail', compact('pesanan','pesanan_detail'));
+    }
 }

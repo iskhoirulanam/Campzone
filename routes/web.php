@@ -59,7 +59,9 @@ Route::get('admin/rekening/hapus-rekening/{id}', 'RekeningController@hapus');
 
 Route::get('home', 'HomeController@index')->name('home');
 Route::get('produk', 'ProdukController@index');
-Route::get('brand-kategori/{}', 'ProdukController@brand_kategori')->name('brand.kategori');
+Route::get('/list_brand/{brand}', 'ProdukController@brand_kategori')->name('brand.kategori');
+Route::get('/list_brand/list_kategori/{kategori}', 'ProdukController@list_kategori')->name('list.kategori');
+Route::get('kontak', 'KontakController@index');
 Route::get('kontak', 'KontakController@index');
 Route::get('pesanan', 'PesananController@client');
 
@@ -74,5 +76,6 @@ Route::post('rental/{id}', 'RentalController@rental');
 Route::get('checkout', 'RentalController@checkout');
 Route::delete('checkout/{id}', 'RentalController@delete');
 
+Route::get('admin/pesanan-detail/{id}','PesananController@pesanan_detail');
 Route::get('pembayaran', 'PembayaranController@index');
 Route::post('upload-bukti-pembayaran', 'PembayaranController@upload_bukti');

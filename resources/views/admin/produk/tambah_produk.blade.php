@@ -21,7 +21,7 @@
                 <select class="form-control" id="" name="kategori_id">
                     <option selected disabled>Pilih Kategori
                     </option>
-                    @foreach ($kategori as $k)
+                    @foreach ($kategori_produk as $k)
                     <option value="{{$k->id}}">{{ $k->kategori }}</option>
                     @endforeach
                 </select>
@@ -32,7 +32,7 @@
                 <select class="form-control" id="" name="brand_id">
                     <option selected disabled>Pilih Brand
                     </option>
-                    @foreach ($brand as $b)
+                    @foreach ($brand_kategori as $b)
                     <option value="{{$b->id}}">{{ $b->nama_brand }}</option>
                     @endforeach
                 </select>

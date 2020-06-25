@@ -12,9 +12,10 @@ class ProdukController extends Controller
 {
     public function index()
     {
-    	$produk = Produk::all();
-        $brand = Brand::all();
-    	return view('/client/produk', compact('brand', 'produk'));
+       $kategori_produk = Kategori::all();
+        $produk = Produk::all();
+        $brand_kategori = Brand::all();
+    	return view('/client/produk', compact('brand_kategori', 'produk', 'kategori_produk'));
     }
 
     public function list()
@@ -26,9 +27,9 @@ class ProdukController extends Controller
 
     public function tambah()
     {
-        $kategori = Kategori::select('id', 'kategori')->get();
-        $brand = Brand::select('id', 'nama_brand')->get();
-        return view('admin/produk/tambah_produk', compact('kategori', 'brand'));
+        $kategori_produk = Kategori::select('id', 'kategori')->get();
+        $brand_kategori = Brand::select('id', 'nama_brand')->get();
+        return view('admin/produk/tambah_produk', compact('kategori_produk', 'brand_kategori'));
     }
 
     public function insert(Request $request)
@@ -54,7 +55,7 @@ class ProdukController extends Controller
             'nama_produk' => $request->nama_produk,
             'merek' => $request->merek,
             'kategori_id' => $request->kategori_id,
-            'brand_id' => $request->kategori_id,
+            'brand_id' => $request->brand_id,
             'harga_sewa' => $request->harga_sewa,
             'stok' => $request->stok,
             'deskripsi' => $request->deskripsi,
@@ -68,8 +69,9 @@ class ProdukController extends Controller
     public function edit($id)
     {
     	$produk = DB::table('produk')->where('id',$id)->get();
-        $kategori = Kategori::select('id', 'kategori')->get();
-        return view('admin/produk/edit_produk', compact('produk', 'kategori'));
+        $kategori_produk = Kategori::select('id', 'kategori')->get();
+        $brand_kategori = Brand::select('id', 'nama_brand')->get();
+        return view('admin/produk/edit_produk', compact('produk', 'brand_kategori', 'kategori_produk'));
     }
 
     public function update(Request $request, $id)
@@ -93,6 +95,18 @@ class ProdukController extends Controller
     }
 
     public function brand_kategori(Brand $brand){
-           return $brand;
+       $kategori_produk = Kategori::select('id', 'kategori')->get();
+        $produk = $brand->Produk()->get();
+        $brand_kategori = Brand::all();
+        return view('/client/produk', compact( 'produk', 'brand_kategori', 'kategori_produk'));
+        
+    }
+
+     public function list_kategori(Kategori $kategori){
+        $kategori_produk = Kategori::all();
+        $produk = $kategori->Produk()->get();
+        $brand_kategori = Brand::all();
+        return view('/client/produk', compact( 'produk', 'brand_kategori', 'kategori_produk'));
+        
     }
 }

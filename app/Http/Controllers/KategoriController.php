@@ -11,8 +11,8 @@ class KategoriController extends Controller
 
     public function index()
     {
-        $kategori = Kategori::all();
-    	return view('admin.kategori.kategori', ['kategori' => $kategori]);
+        $kategori_produk = Kategori::all();
+    	return view('admin.kategori.kategori', ['kategori_produk' => $kategori_produk]);
     }
 
     public function tambah()
@@ -35,21 +35,21 @@ class KategoriController extends Controller
 
     public function edit($id)
     {
-    	$kategori = DB::table('kategori')->where('id',$id)->get();
-        return view('admin.kategori.edit_kategori', compact('kategori'));
+    	$kategori_produk = DB::table('kategori')->where('id',$id)->get();
+        return view('admin.kategori.edit_kategori', compact('kategori_produk'));
     }
 
     public function update(Request $request, $id)
     {
-        $kategori = Kategori::find($id);
-        $kategori->kategori = $request->kategori;
-        $kategori->update();
+        $kategori_produk= Kategori::find($id);
+        $kategori_produk->kategori = $request->kategori;
+        $kategori_produk->update();
         return redirect('/admin/kategori')->with('sukses', 'Data Berhasil Update');
     }
 
     public function hapus($id)
     {
-    	$kategori = Kategori::where('id',$id)->delete();
+    	$kategori_produk = Kategori::where('id',$id)->delete();
         return redirect('admin/kategori')->with('sukses', 'Data Berhasil Dihapus');
     }
    

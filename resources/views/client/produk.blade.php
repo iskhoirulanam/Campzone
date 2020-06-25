@@ -7,7 +7,7 @@
             <ul class="list-group list-group-flush fixed">
                 <li class="list-group-item bg-detail">Brand</li>
 
-                @foreach ($brand as $item)
+                @foreach ($brand_kategori as $item)
                 <li class="list-group-item">
                     <a href="{{route('brand.kategori', $item->slug)}}" class="link">{{$item->nama_brand}}</a>
                 </li>
@@ -24,7 +24,7 @@
                 {{session('sukses')}}
             </div>
             @endif
-            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+            <div id="carouselExampleControls" class="carousel slide mb-5" data-ride="carousel">
                 <div class="slide-caption d-none d-md-block">
                     <h5>First slide label</h5>
                     <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
@@ -48,7 +48,24 @@
             </div>
 
             <section class="new-product">
+
                 <h5 class="text-center sec-title">Produk Terbaru</h5>
+
+                <div class="dropdown mb-5">
+
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Kategori Produk
+                    </button>
+
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        @foreach ($kategori_produk as $k)
+                        <a class="dropdown-item" href="{{route('list.kategori', $k->kategori)}}">{{$k->kategori}}</a>
+                        @endforeach
+                    </div>
+
+                </div>
+
 
                 <div class="row mb-4">
                     @foreach ($produk as $p)

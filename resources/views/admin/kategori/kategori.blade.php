@@ -17,7 +17,7 @@
             <th>Kategori Produk</th>
             <th>Aksi</th>
         </tr>
-        @foreach ($kategori as $k)
+        @foreach ($kategori_produk as $k)
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $k->kategori }}</td>

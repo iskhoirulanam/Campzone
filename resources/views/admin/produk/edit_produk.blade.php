@@ -23,12 +23,23 @@
                 <select class="form-control" id="" name="kategori_id">
                     <option selected disabled>Pilih Kategori
                     </option>
-                    @foreach ($kategori as $k)
+                    @foreach ($kategori_produk as $k)
                     <option value="{{$k->id}}" @if ($k->id === $k->id)
                         selected
                         @endif
                         > {{ $k->kategori }}
                     </option>
+                    @endforeach
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="brand">Brand</label>
+                <select class="form-control" id="" name="brand_id">
+                    <option selected disabled>Pilih Brand
+                    </option>
+                    @foreach ($brand_kategori as $b)
+                    <option value="{{$b->id}}">{{ $b->nama_brand }}</option>
                     @endforeach
                 </select>
             </div>

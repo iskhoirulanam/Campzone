@@ -30,8 +30,8 @@
         <tr>
             <td>{{ $loop->iteration }}</td>
             <td>{{ $p->nama_produk }}</td>
-            <td>kategori</td>
-            <td>Eiger</td>
+            <td>{{$p->kategori->kategori}}</td>
+            <td>{{$p->brand->nama_brand}}</td>
 
 
             <td>Rp. {{ number_format($p->harga_sewa) }}</td>

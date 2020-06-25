@@ -7,10 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class Kategori extends Model
 {
     protected $table = 'kategori';
-   protected $guarded = ['id'];
+    protected $guarded = ['id'];
     public function produk ()
     {
         //return $this->belongsTo('App\Produk');
         return $this->hasMany('App\Produk');
     }
+
+
+       public function getRouteKeyName()
+{
+    return 'kategori';
+}
 }
