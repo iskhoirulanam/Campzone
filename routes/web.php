@@ -13,8 +13,10 @@
 
 
 Auth::routes();
+Route::resource('merek','MerekController');
 
 Route::get('admin/brand', 'BrandController@index');
+
 Route::get('admin/brand/tambah-brand', 'BrandController@create');
 Route::post('admin/brand/insert-brand', 'BrandController@insert');
 Route::get('admin/brand/edit-brand/{id}', 'BrandController@edit');

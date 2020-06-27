@@ -9,7 +9,7 @@ class Brand extends Model
 {
      protected $fillable = ['nama_brand', 'slug'];
     protected $table = 'brand';
-    protected $guarded = ['id'];
+    protected $guarded = [];
     
 
      public function Produk ()

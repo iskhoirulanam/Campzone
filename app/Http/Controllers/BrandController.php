@@ -13,11 +13,10 @@ class BrandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $brand = Brand::all();
-
-       return view('admin.brand.index',compact('brand'));
+       $brand = Brand::all();
+       return view('admin.brand.index')->with('brand', $brand);
     }
 
     /**
@@ -25,10 +24,10 @@ class BrandController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        return view('admin.brand.tambah_brand');
-    }
+    // public function create()
+    // {
+    //     return view('admin.brand.tambah_brand');
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -39,16 +38,12 @@ class BrandController extends Controller
     public function insert(Request $request)
     {
 
-        $this->validate($request, [
-            'nama_brand'=> 'required',
-             'slug'=> 'required',
-         
-            
-        ]);
-     
-     
-        Brand::create($request->all());
-        return redirect('/admin/brand')->with('sukses', 'Data Berhasil Ditambahkan');
+       $brand = new Brand;
+
+       $brand->nama_brand = $request->input('nama_brand');
+       $brand->slug = $request->input('slug');
+
+       $brand->save();
      
     }
 
@@ -103,4 +98,41 @@ class BrandController extends Controller
         return redirect('admin/brand')->with('sukses', 'Data Berhasil Dihapus');
         //
     }
+
+    // public function dataTable()
+    // {
+    //    $model = Brand::query();
+    //     return DataTables::of($model)
+    //         ->addColumn('action', function ($model) {
+    //             return view('layouts._action', [
+    //                 'model' => $model,
+    //                 'url_show' => route('user.show', $model->id),
+    //                 'url_edit' => route('user.edit', $model->id),
+    //                 'url_destroy' => route('user.destroy', $model->id)
+    //             ]);
+    //         })
+    //         ->addIndexColumn()
+    //         ->rawColumns(['action'])
+    //         ->make(true);
+
+
+    // }
+
+    
+
+    // public function apiBrand(Request $request){
+    //     $brand = Brand::all();
+
+    //     return Datatables::of($brand)
+
+    //     ->addColumn('action', function($brand){
+    //                     return '<a href="#" class="btn btn-info btn-xs"> <i class=" glyphicon glyphicon-eye-open"></i>Show</a>'.
+    //                     '<a oneclick="editForm('. $brand->$id.')" class="btn btn-info btn-xs"> <i class=" glyphicon glyphicon-edit"></i>Edit</a>'.
+    //                     '<a oneclick="deleteData('. $brand->$id.')" class="btn btn-danger btn-xs"> <i class=" glyphicon glyphicon-trash"></i>Delete</a>';
+    //                     })
+                        
+    //                     ->make(true);
+
+    //                      return view('admin.brand.index');
+    // }
 }
